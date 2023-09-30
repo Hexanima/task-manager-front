@@ -1,0 +1,44 @@
+.card {
+  display: flex;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgb(148, 20, 222);
+  border: rgb(153, 111, 174) 1px solid;
+  justify-content: space-between;
+  width: 100%;
+  color: lavender;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info .title {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+.info .state {
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  gap: 0.25rem;
+  font-weight: bold;
+}
+
+.dot {
+  border: 0.125rem solid;
+  border-radius: 100%;
+}
+
+.actions {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.actions button {
+    padding: 0.5rem;
+    border: 1px solid rgb(133, 78, 206);
+    background-color: lavender;
+}
