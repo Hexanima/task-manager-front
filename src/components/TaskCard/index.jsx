@@ -1,21 +1,29 @@
 import styles from "./taskcard.module.css";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
+import DeleteIcon from "@mui/icons-material/Delete";
+import useTask from "../../hooks/useTasks";
 
-function TaskCard() {
+function TaskCard({ title, state, id }) {
+  const {removeTask} = useTask();
   return (
     <article className={styles.card}>
       <div className={styles.info}>
-        <p className={styles.title}>Study React</p>
+        <p className={styles.title}>{title}</p>
         <p className={styles.state} style={{ color: "goldenrod" }}>
           <div
             className={styles.dot}
             style={{ borderColor: "goldenrod" }}
           ></div>
-          Pending
+          {state}
         </p>
       </div>
       <div className={styles.actions}>
-        <button>Remove</button>
-        <button>Change</button>
+        <button>
+          <DeleteIcon onClick={() => removeTask(id)} />
+        </button>
+        <button>
+          <AutorenewIcon />
+        </button>
       </div>
     </article>
   );
