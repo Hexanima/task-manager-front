@@ -10,10 +10,10 @@ function TaskCard({ title, state, id }) {
       <div className={styles.info}>
         <p className={styles.title}>{title}</p>
         <p className={styles.state} style={{ color: "goldenrod" }}>
-          <div
+          <span
             className={styles.dot}
             style={{ borderColor: "goldenrod" }}
-          ></div>
+          ></span>
           {state}
         </p>
       </div>

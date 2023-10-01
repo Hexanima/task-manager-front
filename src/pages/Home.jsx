@@ -11,7 +11,7 @@ function Home() {
       <TaskInput />
       {tasks &&
         tasks.map((task) => (
-          <TaskCard title={task.title} state={task.state} id={task.id} />
+          <TaskCard title={task.title} state={task.state} id={task.id} key={task.id}/>
         ))}
     </>
   );
