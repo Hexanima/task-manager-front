@@ -15,6 +15,7 @@
   border-bottom-left-radius: 1rem;
   border-top-left-radius: 1rem;
   border-right: none;
+  outline: none;
 }
 
 .taskInput button {

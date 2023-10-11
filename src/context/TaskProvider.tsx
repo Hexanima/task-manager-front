@@ -1,12 +1,9 @@
 import { createContext, useEffect, useState } from "react";
 
-const TaskContext = createContext();
+const TaskContext = createContext({} as TaskObject);
 
-const TaskProvider = ({ children }) => {
-  const [tasks, setTasks] = useState([
-    { title: "A", state: "Pending", id: 1 },
-    { title: "B", state: "Pending", id: 2 },
-  ]);
+const TaskProvider = ({ children }: { children: any }) => {
+  const [tasks, setTasks] = useState([] as Task[]);
 
   useEffect(() => {
     let taskList = window.localStorage.getItem("taskList");
@@ -19,23 +16,30 @@ const TaskProvider = ({ children }) => {
     window.localStorage.setItem("taskList", JSON.stringify(tasks));
   }, [tasks]);
 
-  function addTask(title) {
+  function addTask(title: string) {
     let taskList = [...tasks];
     let taskId = tasks[tasks.length - 1] ? tasks[tasks.length - 1].id + 1 : 1;
     taskList.push({
       title,
-      state: "Pending",
+      state: "Pendiente",
       id: taskId,
     });
     setTasks(taskList);
   }
 
-  function removeTask(taskId) {
+  function removeTask(taskId: number) {
     let taskList = tasks.filter((task) => task.id != taskId);
     setTasks(taskList);
   }
 
-  const contextValues = { tasks, addTask, removeTask };
+  function changeState(taskId: number, state: TaskState) {
+    let taskList = tasks.map((task) => {
+      return task.id === taskId ? { ...task, state } : task;
+    });
+    setTasks(taskList);
+  }
+
+  const contextValues = { tasks, addTask, removeTask, changeState };
 
   return (
     <TaskContext.Provider value={contextValues}>
