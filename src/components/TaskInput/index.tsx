@@ -9,7 +9,7 @@ function TaskInput() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    let title = titleInput.current?.value;
+    const title = titleInput.current?.value;
     if (titleInput.current && title) {
       addTask(title);
       titleInput.current.value = "";

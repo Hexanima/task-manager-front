@@ -14,7 +14,7 @@ function TaskCard({ title, state, id }: Task) {
     }
   }
 
-  let color = state === "Pendiente" ? "goldenrod" : "green";
+  const color = state === "Pendiente" ? "goldenrod" : "green";
 
   return (
     <article className={styles.card}>

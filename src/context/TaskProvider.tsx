@@ -2,11 +2,11 @@ import { createContext, useEffect, useState } from "react";
 
 const TaskContext = createContext({} as TaskObject);
 
-const TaskProvider = ({ children }: { children: any }) => {
+const TaskProvider = ({ children }: { children: React.ReactNode }) => {
   const [tasks, setTasks] = useState([] as Task[]);
 
   useEffect(() => {
-    let taskList = window.localStorage.getItem("taskList");
+    const taskList = window.localStorage.getItem("taskList");
     if (taskList) {
       setTasks(JSON.parse(taskList));
     }
@@ -17,8 +17,8 @@ const TaskProvider = ({ children }: { children: any }) => {
   }, [tasks]);
 
   function addTask(title: string) {
-    let taskList = [...tasks];
-    let taskId = tasks[tasks.length - 1] ? tasks[tasks.length - 1].id + 1 : 1;
+    const taskList = [...tasks];
+    const taskId = tasks[tasks.length - 1] ? tasks[tasks.length - 1].id + 1 : 1;
     taskList.push({
       title,
       state: "Pendiente",
@@ -28,12 +28,12 @@ const TaskProvider = ({ children }: { children: any }) => {
   }
 
   function removeTask(taskId: number) {
-    let taskList = tasks.filter((task) => task.id != taskId);
+    const taskList = tasks.filter((task) => task.id != taskId);
     setTasks(taskList);
   }
 
   function changeState(taskId: number, state: TaskState) {
-    let taskList = tasks.map((task) => {
+    const taskList = tasks.map((task) => {
       return task.id === taskId ? { ...task, state } : task;
     });
     setTasks(taskList);
