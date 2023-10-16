@@ -5,7 +5,8 @@ type TaskState = "Pendiente" | "En progreso" | "Terminada"
 interface Task {
     title: string,
     state: TaskState,
-    id: number
+    id: number,
+    description?: string
 }
 
 interface TaskObject {
