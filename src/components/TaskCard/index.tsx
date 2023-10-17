@@ -3,6 +3,7 @@ import AutorenewIcon from "@mui/icons-material/Autorenew";
 import DeleteIcon from "@mui/icons-material/Delete";
 import useTask from "../../hooks/useTasks";
 import { useState } from "react";
+import { Task, TaskState } from "../../Globals";
 
 function TaskModal({
   modalState,

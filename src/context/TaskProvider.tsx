@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { Task, TaskObject, TaskState } from "../Globals";
 
 const TaskContext = createContext({} as TaskObject);
 

@@ -2,8 +2,10 @@ import { useRef } from "react";
 import useTask from "../../hooks/useTasks";
 import styles from "./taskinput.module.css";
 import AddIcon from "@mui/icons-material/Add";
+import usePopup from "../../hooks/usePopup";
 
 function TaskInput() {
+  const { showAlert } = usePopup();
   const { addTask } = useTask();
   const titleInput = useRef<HTMLInputElement | null>(null);
 
@@ -14,7 +16,7 @@ function TaskInput() {
       addTask(title);
       titleInput.current.value = "";
     } else {
-      window.alert("Ingrese un titulo para su tarea");
+      showAlert("Ingrese un titulo para su tarea", "error");
     }
   }
 

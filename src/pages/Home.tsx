@@ -1,6 +1,7 @@
 import TaskCard from "../components/TaskCard";
 import useTask from "../hooks/useTasks";
 import TaskInput from "../components/TaskInput";
+import { Task } from "../Globals";
 
 function Home() {
   const { tasks } = useTask();
