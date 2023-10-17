@@ -3,14 +3,7 @@ import { createContext, useEffect, useState } from "react";
 const TaskContext = createContext({} as TaskObject);
 
 const TaskProvider = ({ children }: { children: React.ReactNode }) => {
-  const [tasks, setTasks] = useState([] as Task[]);
-
-  useEffect(() => {
-    const taskList = window.localStorage.getItem("taskList");
-    if (taskList) {
-      setTasks(JSON.parse(taskList));
-    }
-  }, []);
+  const [tasks, setTasks] = useState(JSON.parse(window.localStorage.getItem("taskList") || "[]") as Task[]);
 
   useEffect(() => {
     window.localStorage.setItem("taskList", JSON.stringify(tasks));
