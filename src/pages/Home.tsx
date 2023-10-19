@@ -1,18 +1,20 @@
-import TaskCard from "../components/TaskCard";
-import useTask from "../hooks/useTasks";
+import { useMediaQuery } from "@mui/material";
 import TaskInput from "../components/TaskInput";
-import { Task } from "../Globals";
+import TaskList from "../components/TaskList";
 
 function Home() {
-  const { tasks } = useTask();
+  const matches = useMediaQuery("(min-width: 768px)");
 
   return (
     <>
       <TaskInput />
-      {tasks &&
-        tasks.map((task : Task) => (
-          <TaskCard title={task.title} state={task.state} id={task.id} key={task.id}/>
-        ))}
+      {(matches && (
+        <div style={{ display: "flex", gap: "1rem", width:"100%" }}>
+          <TaskList filter="Pendiente" />
+          <TaskList filter="En progreso" />
+          <TaskList filter="Terminada" />
+        </div>
+      )) || <TaskList />}
     </>
   );
 }
